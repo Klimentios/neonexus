@@ -1,13 +1,22 @@
 # <img src="static/neonexus-mark.svg" alt="" width="34"> NEONEXUS
 
-**One room for all your AIs.** Claude, ChatGPT / Codex, Gemini and any other model work together
-in one chat, on your computer, with the subscriptions you already pay for. You talk to all of them
-at once or one by one, by text or by voice, watch their real terminals, hand them projects with
-clear "done" criteria, and edit the code they write in a full VS Code — all in one window.
+**One local room for your AI team.** Bring subscription-based agent CLIs, API models, and local
+models into a shared conversation. Give agents projects with clear completion criteria, watch their
+real terminals, review code changes, and decide what gets accepted — from one interface.
 
-![macOS](https://img.shields.io/badge/macOS-supported-111) ![Linux](https://img.shields.io/badge/Linux-supported-111) ![Windows](https://img.shields.io/badge/Windows-room%20%26%20chat-555) ![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-1f3b73) ![Languages](https://img.shields.io/badge/UI-12%20languages-1f3b73)
+![macOS: tested](https://img.shields.io/badge/macOS-tested-176a52) ![Linux: installer not tested on Linux](https://img.shields.io/badge/Linux-installer%20untested-555) ![Windows: installer not tested on Windows](https://img.shields.io/badge/Windows-installer%20untested-555) ![License: AGPL-3.0-or-later](https://img.shields.io/badge/license-AGPL--3.0--or--later-1f3b73) ![UI: 12 languages](https://img.shields.io/badge/UI-12%20languages-1f3b73)
 
-![Claude, Codex and Gemini building and reviewing a CLI together](docs/screenshots/room.png)
+## Install on macOS
+
+Download the repository, unzip it, and double-click **`Install NEONEXUS.command`**. A fresh macOS
+install was tested with and without Homebrew. The installer starts the room locally; open
+<http://127.0.0.1:8300> and use **Connect AI** to add an agent. See [INSTALL.md](INSTALL.md) for
+requirements, start/stop, uninstall, and the unverified Linux and Windows paths.
+
+![Illustrative NEONEXUS demo room with sample agents and project data](docs/screenshots/room.png)
+
+*Demo room with sample content. This image is not evidence of a sustained live session with all
+shown providers.*
 
 <p>
 <img src="docs/screenshots/projects.png" width="49%" alt="Projects with done criteria and evidence">
@@ -16,19 +25,24 @@ clear "done" criteria, and edit the code they write in a full VS Code — all in
 <img src="docs/screenshots/languages.png" width="49%" alt="The interface in Japanese">
 </p>
 
-## Why
+## What makes it different
 
-Every AI is good at something different. Today you copy text between their apps. NEONEXUS puts
-them in one room: they read the same conversation, answer each other, split the work, review each
-other and report back — and you stay in charge.
+- **One room, several AIs.** Use your own subscriptions through official CLIs, or connect API and
+  local models. Mention several agents and they answer one after another, each seeing the preceding
+  replies; simultaneous replies are also a setting.
+- **Real terminals and approval controls.** See agent CLIs side by side and answer supported
+  permission prompts with **Allow / Deny**.
+- **Code mode with a human decision.** A builder works, a reviewer checks, and you inspect the diff
+  before **Accept** or **Send back**.
+- **Projects backed by evidence.** Define done criteria, track progress and review what an agent
+  cites as proof.
+- **VS Code inside.** The Code tab loads a pinned, SHA-256-checked code-server; its built-in editor
+  remains available while the download finishes.
+- **Local-first interface.** The room binds to `127.0.0.1`, has no telemetry, and supports 12 UI
+  languages. Agent CLIs and configured API models still contact their respective providers.
 
-- **Your subscriptions, not API bills.** Agents run the official CLIs — Claude Code, Codex,
-  Gemini (Antigravity) CLI, Qwen Code, Copilot CLI — signed in with your own accounts.
-- **Or any model you like.** Add an API key (OpenAI, Anthropic, OpenRouter, Gemini, Groq,
-  DeepSeek, Mistral, xAI, any OpenAI-compatible URL) or a local model (Ollama, LM Studio,
-  llama.cpp, vLLM, your own GPU server) from **Connect AI**. Keys never leave your computer except
-  to that provider.
-- **Local and private.** Everything runs on `127.0.0.1`. No account, no cloud, no telemetry.
+The product builds on [agentchattr](https://github.com/bcurts/agentchattr) by Ben Curtis (MIT);
+see [LICENSE-agentchattr](LICENSE-agentchattr) and [NOTICE.md](NOTICE.md).
 
 ## What you get
 
@@ -40,20 +54,41 @@ other and report back — and you stay in charge.
 | **Projects** | A goal, criteria for "done", progress. Agents tick criteria with evidence; you accept, reopen, edit or delete. Drag an agent onto a project to add it. |
 | **Squads** | A lead agent raises numbered sub-agents, each in its own git worktree and branch; they report, the lead merges. |
 | **Code** | A full VS Code (open-source code-server) inside the app on the agents' folder — extensions, terminal, git, search. Fetched once in the background (about 200 MB); the built-in editor works meanwhile. |
-| **Voice** | Talk to the whole team or to each agent in turn; live transcription; answers read aloud. |
+| **Voice** | Browser speech APIs and speech output are wired up; a real microphone session has not yet been verified. |
 | **Connect AI** | One screen to add subscription CLIs (one-click install, one-click "Add to team"), API keys, local models, or connect other apps over MCP. |
 | **Honest states** | Online, working, waiting for your OK, out of quota (with the date it comes back), signed out (with a **Sign in again** button) — read from the agent's real screen, never guessed. |
 | **Safe by default** | Agents ask before running commands. "Full access" is an explicit per-agent switch. |
-| **Themes** | Clean (light) by default; Breach and Blackwall for the cyberpunk look. |
+| **Themes** | Clean (light) by default; Breach and Blackwall are the two dark visual themes. See the theme previews below. |
 | **12 languages** | English, Русский, 中文, Español, Français, Deutsch, Português, 日本語, 한국어, Türkçe, العربية, हिन्दी — picked from your system, switchable in Settings. Agents answer in the language you write in. |
 
-## Install — one click
+### Theme previews
+
+| Clean | Breach | Blackwall |
+|---|---|---|
+| [Demo room](docs/screenshots/room.png) | [Demo room](docs/screenshots/cyberpunk.png) | [Empty local room](docs/screenshots/blackwall.png) |
+
+Clean and Breach show sample English project content; Blackwall was captured from an isolated empty
+room with agents offline. These images demonstrate the interface, not live provider availability.
+
+## Code mode
+
+1. **Describe a task.** Choose a folder with a Git starting point; NEONEXUS creates the project and
+   channel.
+2. **Choose a builder.** The agent works in the project folder and reports progress.
+3. **Choose a reviewer.** A second agent checks the work and its diff.
+4. **Review changes.** Inspect the diff, then **Accept** to commit and mark the project done, or
+   **Send back** with a note.
+
+This flow was verified end to end. Agent availability depends on each CLI being installed and
+signed in; a long joint Claude–Codex–Gemini session has not been verified.
+
+## Other installation paths
 
 | System | How |
 |---|---|
-| **macOS** | Download, unzip, double-click **`Install NEONEXUS.command`** (if macOS blocks it: right-click → Open). |
-| **Linux** | `sh install.sh` |
-| **Windows 10/11** | Double-click **`install.bat`** (SmartScreen: More info → Run anyway). |
+| **macOS** | Download, unzip, double-click **`Install NEONEXUS.command`** (if macOS blocks it: right-click → Open). Tested on macOS. |
+| **Linux** | `sh install.sh` — syntax-checked; not run on Linux yet. |
+| **Windows 10/11** | Double-click **`install.bat`** — parser-checked; not run on Windows yet. |
 
 The installer adds only what is missing (Python, tmux), keeps its Python packages inside the
 folder, starts the room and opens **http://127.0.0.1:8300**. Then press **Connect AI** and add your
@@ -61,9 +96,8 @@ first AI. Details, start / stop and uninstall: [INSTALL.md](INSTALL.md).
 
 > **Tested on macOS** (with and without Homebrew). The Linux and Windows installers are written and
 > syntax-checked but have not been run on those systems yet — reports welcome.
-> **Windows:** the room, chat, projects, Connect AI and voice; live agent terminals, squads and
-> Allow / Deny need tmux, so they are macOS / Linux only for now. Live agent terminals,
-> squads and Allow / Deny need tmux, so they are macOS / Linux only for now.
+> **Windows:** room, chat, projects, Connect AI and voice are the intended scope; live agent
+> terminals, squads and Allow / Deny need tmux. The Windows installer still needs an on-device test.
 
 ## How it works
 
@@ -123,6 +157,26 @@ cd tools/web-workspace && npm ci && npm run build   # rebuild the editor / holog
 
 API reference: [API.md](API.md). The original agentchattr guide (launchers, advanced
 configuration, architecture): [docs/agentchattr-guide.md](docs/agentchattr-guide.md).
+
+## FAQ
+
+**Does it cost API money?** Subscription-based CLIs use the accounts you already have; NEONEXUS
+does not require an API key for that path. API keys are optional and the provider may bill for their
+use. Local models require your own hardware or server.
+
+**Is my code sent anywhere?** The NEONEXUS room itself listens on `127.0.0.1` and has no telemetry.
+Agents' own CLIs communicate with their providers under those providers' terms, and configured API
+models send requests to their selected endpoints. Check each provider's data policy before sharing
+sensitive code.
+
+**Does Windows work?** The Windows installer has passed parser checks but has not been tested on a
+Windows machine. Room, chat, projects, Connect AI and voice are the intended scope; live terminals,
+squads and Allow / Deny depend on tmux. See [INSTALL.md](INSTALL.md).
+
+**Which AIs can I connect?** Claude Code, Codex, Gemini/Antigravity, Qwen Code and Copilot CLI;
+OpenAI-compatible APIs; and local Ollama, LM Studio, llama.cpp or vLLM endpoints. CLI availability
+still depends on installation, sign-in and quota. A sustained joint Claude–Codex–Gemini session has
+not been verified.
 
 ## Licence
 

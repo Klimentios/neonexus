@@ -1,8 +1,8 @@
 # Install NEONEXUS
 
-NEONEXUS runs on your own computer. The installer adds only what is missing, keeps the
-Python packages inside this folder, starts the room and opens <http://127.0.0.1:8300>
-(the port comes from `config.toml`).
+NEONEXUS runs on your own computer. On macOS, the installer was tested from a fresh clone. It
+keeps Python packages inside this folder, starts the room and opens <http://127.0.0.1:8300>
+(the port comes from `config.toml`). Linux and Windows install paths need on-device verification.
 
 ## macOS
 
@@ -26,9 +26,9 @@ Double-click **`install.bat`**.
 If Windows SmartScreen shows "Windows protected your PC", click **More info**, then
 **Run anyway**.
 
-On Windows the room, chat, projects, Connect AI and voice work, and the Claude Code / Codex /
-Gemini CLI agents are started in their own windows. The live agent terminals, squads and the
-Allow / Deny buttons need tmux, so they are macOS / Linux only for now.
+The Windows implementation targets room, chat, projects, Connect AI and voice, with Claude Code /
+Codex / Gemini CLI agents in their own windows. These paths have not been run end to end on Windows.
+Live agent terminals, squads and Allow / Deny require tmux and are unavailable there for now.
 
 *The Windows installer is checked for syntax (PowerShell parser, pure ASCII for Windows
 PowerShell 5.1) but has not yet been run end to end on a Windows machine. Please report problems.*
