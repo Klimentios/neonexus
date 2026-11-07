@@ -1,31 +1,44 @@
 # <img src="static/neonexus-mark.svg" alt="" width="34"> NEONEXUS
 
-**One local room for your AI team.** Bring subscription-based agent CLIs, API models, and local
-models into a shared conversation. Give agents projects with clear completion criteria, watch their
-real terminals, review code changes, and decide what gets accepted — from one interface.
+**One local workspace for your AI team.** Bring Claude Code, Codex, Gemini CLI and other agent CLIs
+into one conversation, or connect API and local models. Give agents a project, watch their terminals,
+and review the code diff before you accept their work.
 
 ![macOS: tested](https://img.shields.io/badge/macOS-tested-176a52) ![Linux: installer not tested on Linux](https://img.shields.io/badge/Linux-installer%20untested-555) ![Windows: installer not tested on Windows](https://img.shields.io/badge/Windows-installer%20untested-555) ![License: AGPL-3.0-or-later](https://img.shields.io/badge/license-AGPL--3.0--or--later-1f3b73) ![UI: 12 languages](https://img.shields.io/badge/UI-12%20languages-1f3b73)
 
-## Install on macOS
+**[Get started](#get-started-on-macos) · [See the interface](#the-interface) · [Why NEONEXUS](#why-neonexus) · [Code mode](#code-mode) · [Safety](#safety)**
 
-Download the repository, unzip it, and double-click **`Install NEONEXUS.command`**. A fresh macOS
-install was tested with and without Homebrew. The installer starts the room locally; open
-<http://127.0.0.1:8300> and use **Connect AI** to add an agent. See [INSTALL.md](INSTALL.md) for
+## Get started on macOS
+
+1. **[Download NEONEXUS 1.0.0](https://github.com/Klimentios/neonexus/archive/refs/tags/v1.0.0.zip)** and unzip it.
+2. Double-click **`Install NEONEXUS.command`** in the extracted folder. If macOS blocks it,
+   right-click the file and choose **Open**. The installer starts the room locally.
+3. Open **<http://127.0.0.1:8300>**, choose **Connect AI**, add a CLI, API model or local model,
+   and sign in to the provider's CLI if needed.
+
+A fresh macOS install was tested with and without Homebrew. See [INSTALL.md](INSTALL.md) for
 requirements, start/stop, uninstall, and the unverified Linux and Windows paths.
+
+## The interface
 
 ![Illustrative NEONEXUS demo room with sample agents and project data](docs/screenshots/room.png)
 
 *Demo room with sample content. This image is not evidence of a sustained live session with all
 shown providers.*
 
-<p>
-<img src="docs/screenshots/projects.png" width="49%" alt="Projects with done criteria and evidence">
-<img src="docs/screenshots/connect.png" width="49%" alt="Connect AI: subscriptions, API keys, local models">
-<img src="docs/screenshots/cyberpunk.png" width="49%" alt="The Breach cyberpunk theme">
-<img src="docs/screenshots/languages.png" width="49%" alt="The interface in Japanese">
-</p>
+<table>
+<tr><th>Projects with evidence</th><th>Connect AI</th></tr>
+<tr>
+<td><a href="docs/screenshots/projects.png"><img src="docs/screenshots/projects.png" alt="Project criteria and evidence in NEONEXUS"></a></td>
+<td><a href="docs/screenshots/connect.png"><img src="docs/screenshots/connect.png" alt="Connect subscription CLIs, API providers and local models"></a></td>
+</tr>
+</table>
 
-## What makes it different
+## Why NEONEXUS
+
+NEONEXUS fits a workflow where several AI tools need to share context, work in real project folders,
+and show their work before a person accepts it. You can start with a subscription CLI and add API or
+local models only when you need them.
 
 - **One room, several AIs.** Use your own subscriptions through official CLIs, or connect API and
   local models. Mention several agents and they answer one after another, each seeing the preceding
@@ -61,14 +74,21 @@ see [LICENSE-agentchattr](LICENSE-agentchattr) and [NOTICE.md](NOTICE.md).
 | **Themes** | Clean (light) by default; Breach and Blackwall are the two dark visual themes. See the theme previews below. |
 | **12 languages** | English, Русский, 中文, Español, Français, Deutsch, Português, 日本語, 한국어, Türkçe, العربية, हिन्दी — picked from your system, switchable in Settings. Agents answer in the language you write in. |
 
-### Theme previews
+### Three themes
 
-| Clean | Breach | Blackwall |
-|---|---|---|
-| [Demo room](docs/screenshots/room.png) | [Demo room](docs/screenshots/cyberpunk.png) | [Empty local room](docs/screenshots/blackwall.png) |
+<table>
+<tr><th>Clean</th><th>Breach</th><th>Blackwall</th></tr>
+<tr>
+<td><a href="docs/screenshots/room.png"><img src="docs/screenshots/room.png" alt="Clean light theme"></a></td>
+<td><a href="docs/screenshots/cyberpunk.png"><img src="docs/screenshots/cyberpunk.png" alt="Breach dark theme"></a></td>
+<td><a href="docs/screenshots/blackwall.png"><img src="docs/screenshots/blackwall.png" alt="Blackwall dark theme"></a></td>
+</tr>
+</table>
 
 Clean and Breach show sample English project content; Blackwall was captured from an isolated empty
 room with agents offline. These images demonstrate the interface, not live provider availability.
+
+[See the interface in Japanese](docs/screenshots/languages.png).
 
 ## Code mode
 
