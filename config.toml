@@ -1,0 +1,204 @@
+[server]
+port = 8300
+host = "127.0.0.1"
+data_dir = "./data"
+
+# Where agents work. {workspace} is the shared project folder (coding agents, the Code tab,
+# projects and squads); {chats} holds one empty folder per chat-only agent. Change them here or,
+# without touching this file, in config.local.toml under [paths]. Folders are created on start.
+[paths]
+workspace = "~/NEONEXUS/workspace"
+chats = "~/NEONEXUS/chats"
+
+# Add agents here. Each gets a status pill, @mention routing, and color.
+# "cwd" is the working directory for the agent's terminal session.
+# "command" is the CLI command (must be on PATH).
+
+[agents.claude]
+command = "claude"
+cwd = "{workspace}"
+color = "#da7756"
+label = "Claude"
+
+[agents.codex]
+command = "codex"
+cwd = "{workspace}"
+color = "#10a37f"
+label = "Codex"
+
+# Gemini runs on Antigravity CLI (agy), Google's current agent CLI for personal accounts.
+# agy reads MCP only from one fixed global file, so the agy agents share it; council.sh
+# starts them apart so each picks up its own token.
+[agents.gemini]
+command = "agy"
+cwd = "{workspace}"
+color = "#4285f4"
+label = "Gemini"
+mcp_inject = "settings_file"
+mcp_settings_path = "~/.gemini/config/mcp_config.json"
+mcp_transport = "http"
+mcp_http_key = "serverURL"
+mcp_merge_project = true
+
+# Chat-only companions: the same subscriptions through the official CLIs, but
+# with no file or shell tools (see council.sh for the flags) and an empty
+# folder, so they just talk. Mention them as @claudechat, @gptchat, @geminichat.
+[agents.claudechat]
+command = "claude"
+cwd = "{chats}/claude"
+color = "#f0a37f"
+label = "Claude Chat"
+
+[agents.gptchat]
+command = "codex"
+cwd = "{chats}/gpt"
+color = "#74d4b0"
+label = "GPT Chat"
+
+[agents.geminichat]
+command = "agy"
+cwd = "{chats}/gemini"
+color = "#8ab4f8"
+label = "Gemini Chat"
+mcp_inject = "settings_file"
+mcp_settings_path = "~/.gemini/config/mcp_config.json"
+mcp_transport = "http"
+mcp_http_key = "serverURL"
+mcp_merge_project = true
+
+[agents.kimi]
+command = "kimi"
+cwd = "{workspace}"
+color = "#1783ff"
+label = "Kimi"
+
+[agents.qwen]
+command = "qwen"
+cwd = "{workspace}"
+color = "#8b5cf6"
+label = "Qwen"
+mcp_inject = "settings_file"
+mcp_settings_path = ".qwen/settings.json"
+mcp_transport = "http"
+inject_delay = 1.0
+
+[agents.kilo]
+command = "kilo"
+cwd = "{workspace}"
+color = "#f7f677"
+label = "Kilo"
+
+[agents.codebuddy]
+command = "codebuddy"
+cwd = "{workspace}"
+color = "#6C4DFF"
+label = "CodeBuddy"
+mcp_inject = "settings_file"
+mcp_settings_path = "~/.codebuddy/.mcp.json"
+mcp_transport = "http"
+mcp_http_key = "url"
+
+[agents.copilot]
+command = "copilot"
+cwd = "{workspace}"
+color = "#8534F3"
+label = "Copilot"
+mcp_inject = "settings_file"
+mcp_settings_path = "~/.copilot/mcp-config.json"
+mcp_transport = "http"
+mcp_http_key = "url"
+enter_backend = "wm_setfocus"
+
+# Agents here run official CLIs on your own subscriptions. API-key and local-model agents
+# are added from the app (Connect AI) into config.local.toml, never here.
+
+[routing]
+# "none" = only route on explicit @mention. "all" = route to all agents by default.
+default = "none"
+max_agent_hops = 4
+
+[mcp]
+http_port = 8200
+sse_port = 8201
+
+[images]
+upload_dir = "./uploads"
+max_size_mb = 10
+
+[attachments]
+# Non-image files share images.upload_dir; agents must be able to read that folder.
+max_size_mb = 25
+# Accept any file type, including files without an extension. To restrict types,
+# replace ["*"] with a list such as [".pdf", ".txt", ".py", ".wav"].
+allowed_extensions = ["*"]
+
+# --- MCP injection modes ---
+# By default, claude/codex/gemini/kimi use built-in MCP config injection.
+# For other CLI agents, set mcp_inject to tell the wrapper how to inject auth:
+#
+# mcp_inject modes:
+#   "settings_file" — write a JSON settings file at mcp_settings_path (merges, not overwrites)
+#   "env"           — write a settings file, expose path via mcp_env_var
+#   "flag"          — write a config file, pass via CLI flag (mcp_flag, default: --mcp-config)
+#   "proxy_flag"    — start a local proxy, pass URL via CLI flag template
+#
+# Example: Qwen Code CLI
+#   [agents.qwen]
+#   command = "qwen"
+#   cwd = ".."
+#   color = "#8b5cf6"
+#   label = "Qwen"
+#   mcp_inject = "settings_file"
+#   mcp_settings_path = ".qwen/settings.json"
+#   mcp_transport = "http"
+#
+# Example: CLI with env var for settings
+#   [agents.mycli]
+#   command = "mycli"
+#   mcp_inject = "env"
+#   mcp_env_var = "MYCLI_MCP_SETTINGS"
+#   mcp_transport = "http"
+
+# --- API agents (local models) ---
+# Add local model agents in config.local.toml (gitignored).
+# Example config.local.toml:
+#
+#   [agents.qwen]
+#   type = "api"
+#   base_url = "http://localhost:8189/v1"
+#   model = "qwen3-4b"
+#   color = "#8b5cf6"
+#   label = "Qwen"
+#   # api_key_env = "MY_API_KEY"     # optional: env var name for API key
+#   # system_prompt = "You are ..."   # optional: custom system prompt
+#
+# Then run: python wrapper_api.py qwen
+
+# Squad members: sub-agents a lead raises with squad_spawn. Always
+# numbered (squad-codex-1, squad-codex-2…), so the main @codex is never renamed.
+# The cwd is replaced by the member's git worktree; flags come from squads.py.
+[agents.squad-claude]
+command = "claude"
+cwd = "{workspace}"
+color = "#c9a27a"
+label = "Squad Claude"
+numbered = true
+
+[agents.squad-codex]
+command = "codex"
+cwd = "{workspace}"
+color = "#5fb89a"
+label = "Squad Codex"
+numbered = true
+
+[agents.squad-gemini]
+command = "agy"
+cwd = "{workspace}"
+color = "#7aa7e8"
+label = "Squad Gemini"
+numbered = true
+mcp_inject = "settings_file"
+mcp_settings_path = "~/.gemini/config/mcp_config.json"
+mcp_transport = "http"
+mcp_http_key = "serverURL"
+mcp_merge_project = true

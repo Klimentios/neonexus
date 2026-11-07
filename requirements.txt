@@ -1,0 +1,4 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+mcp>=1.30,<2.0  # needs mcp.server.transport_security (floor = tested 1.30); v2 removes mcp.server.fastmcp (issue #85)
+httpx>=0.27  # used by the tests (fastapi.testclient)

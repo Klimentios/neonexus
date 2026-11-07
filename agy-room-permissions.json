@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp(agentchattr/chat_send)",
+      "mcp(agentchattr/chat_read)",
+      "mcp(agentchattr/chat_resync)",
+      "mcp(agentchattr/chat_join)",
+      "mcp(agentchattr/chat_who)",
+      "mcp(agentchattr/chat_rules)",
+      "mcp(agentchattr/chat_decision)",
+      "mcp(agentchattr/chat_channels)",
+      "mcp(agentchattr/chat_set_hat)",
+      "mcp(agentchattr/chat_claim)",
+      "mcp(agentchattr/chat_summary)",
+      "mcp(agentchattr/chat_propose_job)",
+      "mcp(agentchattr/chat_job_update)",
+      "mcp(agentchattr/chat_log_decision)",
+      "mcp(agentchattr/chat_mission)",
+      "mcp(agentchattr/project_status)",
+      "mcp(agentchattr/project_create)",
+      "mcp(agentchattr/project_check)",
+      "mcp(agentchattr/project_update)",
+      "mcp(agentchattr/squad_spawn)",
+      "mcp(agentchattr/squad_status)",
+      "mcp(agentchattr/squad_stop)",
+      "mcp(agentchattr/squad_report)",
+      "mcp(agentchattr/squad_merge)",
+      "mcp(agentchattr/squad_message)"
+    ]
+  }
+}

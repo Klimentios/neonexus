@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "esbuild src.js --bundle --minify --format=iife --loader:.ttf=file --outfile=../../static/workspace.bundle.js && esbuild node_modules/monaco-editor/esm/vs/editor/editor.worker.js --bundle --minify --format=iife --outfile=../../static/editor.worker.js && esbuild hologram.js --bundle --minify --format=iife --outfile=../../static/hologram.bundle.js"
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "0.10.0",
+    "@xterm/xterm": "5.5.0",
+    "monaco-editor": "0.55.1",
+    "three": "0.160.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

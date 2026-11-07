@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Неонексус">
+  <path fill="#101214" d="M10 2h44l8 8v44l-8 8H2V10z"/>
+  <path fill="none" stroke="#f5e81d" stroke-width="3" d="M11 3h42l8 8v42l-8 8H3V11z"/>
+  <path fill="#f5e81d" d="M15 15h8l18 22V15h8v34h-8L23 27v22h-8z"/>
+  <path fill="#76e9dc" d="M9 9h5v5H9zm41 0h5v5h-5zM9 50h5v5H9zm41 0h5v5h-5z"/>
+  <path stroke="#76e9dc" stroke-width="2" d="M27 8h10M27 56h10"/>
+</svg>
