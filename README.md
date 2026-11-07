@@ -21,7 +21,9 @@ requirements, start/stop, uninstall, and the unverified Linux and Windows paths.
 
 ## The interface
 
-![Illustrative NEONEXUS demo room with sample agents and project data](docs/screenshots/room.png)
+**Breach — the cyberpunk theme.** The same workspace is also available in Clean and Blackwall.
+
+![Illustrative NEONEXUS demo room in the Breach cyberpunk theme](docs/screenshots/cyberpunk.png)
 
 *Demo room with sample content. This image is not evidence of a sustained live session with all
 shown providers.*
