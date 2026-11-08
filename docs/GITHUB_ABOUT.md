@@ -1,13 +1,10 @@
 # GitHub presentation copy for the owner
 
-This file is a draft to paste into GitHub after the owner creates the repository. It is not a record
-of a published release.
+Copy for the published NEONEXUS repository. Verify the live About field before replacing it.
 
 ## About
 
-**Description:** Local-first room for AI agents, projects, terminals and reviewed code changes.
-Use subscription CLIs, optional APIs or local models. macOS installer tested; Linux and Windows
-installers await on-device verification.
+**Description:** One idea, multiple AI agents, one reviewed result. Bring Claude Code, Codex and Gemini CLI into a shared local room, use existing subscriptions, and inspect the builder/reviewer diff before accepting code. Optional API and local models.
 
 **Website:** Leave empty.
 

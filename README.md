@@ -1,8 +1,8 @@
 # <img src="static/neonexus-mark.svg" alt="" width="34"> NEONEXUS
 
-**One local workspace for your AI team.** Bring Claude Code, Codex, Gemini CLI and other agent CLIs
-into one conversation, or connect API and local models. Give agents a project, watch their terminals,
-and review the code diff before you accept their work.
+**Bring an idea to a room of AI agents. Leave with a reviewed result.** NEONEXUS connects Claude Code, Codex, Gemini CLI and other supported tools in one local workspace. Mention several agents in a conversation: by default they answer in sequence, so each can build on the previous reply; simultaneous replies are optional. Turn the discussion into a project with completion criteria, let a builder work and a reviewer inspect the diff, then decide what to accept.
+
+**Use the subscriptions you already have.** The official CLI route uses each provider's signed-in account and does not require a separate API key in NEONEXUS. Provider subscription limits and terms still apply. API-key and local-model connections are optional; API calls may be billed separately.
 
 ![macOS: tested](https://img.shields.io/badge/macOS-tested-176a52) ![Linux: installer not tested on Linux](https://img.shields.io/badge/Linux-installer%20untested-555) ![Windows: installer not tested on Windows](https://img.shields.io/badge/Windows-installer%20untested-555) ![License: AGPL-3.0-or-later](https://img.shields.io/badge/license-AGPL--3.0--or--later-1f3b73) ![UI: 12 languages](https://img.shields.io/badge/UI-12%20languages-1f3b73)
 
@@ -40,6 +40,12 @@ sustained live session with all shown providers. [Compare all three themes](#thr
 <td><a href="docs/screenshots/connect.png"><img src="docs/screenshots/connect.png" alt="Connect subscription CLIs, API providers and local models"></a></td>
 </tr>
 </table>
+
+## One idea, several perspectives, one decision
+
+Ask a question once and mention the agents you want involved. In sequential mode, their replies form one visible conversation: one agent can propose an approach, another can challenge it, and a third can refine the next step after reading what was already said. You can also switch to simultaneous replies when independent first opinions are more useful. The room keeps the conversation, agent terminals and project context together; a loop guard prevents endless agent-to-agent chatter.
+
+When an idea becomes a coding task, Code mode gives it a folder, a channel and criteria for done. Choose a builder and reviewer. NEONEXUS shows the work, evidence and diff, then offers **Accept** or **Send back**. That verified flow turns multi-agent discussion into code you can inspect before it enters your project. Agent responses and availability still depend on the connected CLIs and their subscriptions; the screenshot is an illustration, not proof of a long live session with every provider.
 
 ## Why NEONEXUS
 

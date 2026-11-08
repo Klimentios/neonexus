@@ -1,6 +1,8 @@
-# Why I built NEONEXUS: one room for several AI coding agents
+# NEONEXUS: one idea, several AI agents, one reviewed result
 
-I use more than one AI coding tool. Each CLI is useful on its own, but separate terminals make it hard to see the full conversation, know which agent is waiting for approval, and review the changes before they become part of a project. I built NEONEXUS to put those steps in one local workspace.
+I built NEONEXUS for the moment when one idea needs more than one AI perspective. Instead of copying a prompt between separate chats, I can mention Claude Code, Codex, Gemini CLI or another connected agent in one room. In the default sequential mode, each agent reads the earlier replies before answering. One can propose a plan, another can challenge an assumption, and a third can turn the discussion into a concrete next step. Simultaneous replies are available when I want independent first opinions.
+
+The same room can become a coding project. NEONEXUS keeps the conversation, real agent terminals, task criteria, evidence and code diff together, so I can see what happened and decide what to accept. This is a local workspace for collaboration and review, not an automatic promise that multiple agents always agree or finish a task correctly.
 
 ## The workflow
 
@@ -9,6 +11,10 @@ You connect an agent through its official CLI, or optionally add an API or local
 For a coding task, Code mode creates a project with completion criteria. You choose a builder and a reviewer. The builder works in the project folder; the reviewer checks the result and its diff. You inspect that diff and choose **Accept** to commit it or **Send back** with a note. This builder, reviewer, and human decision flow has been tested end to end.
 
 The point is accountability: a reply saying “done” is not enough. The project records criteria and evidence, while the code review screen shows what actually changed.
+
+## Use your existing subscriptions
+
+The official CLI path works through each provider's signed-in tool. NEONEXUS does not require an API key or a separate token bill for that path; the subscription's own usage limits and terms still apply. If I want an API model, I can add its key, and that provider may charge for calls. A local model is another option. This choice matters: I can start with the tools I already pay for and add API or local capacity only when the task calls for it.
 
 ## Why a local room?
 
