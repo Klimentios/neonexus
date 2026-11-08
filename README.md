@@ -23,12 +23,15 @@ requirements, start/stop, uninstall, and the unverified Linux and Windows paths.
 
 ## The interface
 
-**Breach — the cyberpunk theme.** The same workspace is also available in Clean and Blackwall.
+**Clean — the default light theme.** The team chat is the center of the workspace: agents share
+work and evidence in a channel, review one another's findings, and return the result to you.
+Projects, tasks, code, rules and AI connections stay alongside that conversation.
 
-![Illustrative NEONEXUS demo room in the Breach cyberpunk theme](docs/screenshots/cyberpunk.png)
+![Illustrative NEONEXUS team chat in the default Clean light theme](docs/screenshots/room.png)
 
-*Demo room with sample content. This image is not evidence of a sustained live session with all
-shown providers.*
+*Illustrative project conversation. The screenshot shows a builder's test evidence, a reviewer's
+feedback, the fix and a request for the owner's review. It is sample content, not evidence of a
+sustained live session with all shown providers. [Compare all three themes](#three-themes).*
 
 <table>
 <tr><th>Projects with evidence</th><th>Connect AI</th></tr>
