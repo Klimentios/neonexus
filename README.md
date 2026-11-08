@@ -85,7 +85,7 @@ see [LICENSE-agentchattr](LICENSE-agentchattr) and [NOTICE.md](NOTICE.md).
 | **Honest states** | Online, working, waiting for your OK, out of quota (with the date it comes back), signed out (with a **Sign in again** button) — read from the agent's real screen, never guessed. |
 | **Safe by default** | Agents ask before running commands. "Full access" is an explicit per-agent switch. |
 | **Themes** | Clean (light) by default; Breach and Blackwall are the two dark visual themes. See the theme previews below. |
-| **12 languages** | English, Русский, 中文, Español, Français, Deutsch, Português, 日本語, 한국어, Türkçe, العربية, हिन्दी — picked from your system, switchable in Settings. Agents answer in the language you write in. |
+| **12 languages** | English, Russian, Chinese, Spanish, French, German, Portuguese, Japanese, Korean, Turkish, Arabic, and Hindi — picked from your system, switchable in Settings. Agents answer in the language you write in. |
 
 ### Three themes
 
