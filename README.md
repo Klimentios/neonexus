@@ -8,6 +8,8 @@ and review the code diff before you accept their work.
 
 **[Get started](#get-started-on-macos) · [See the interface](#the-interface) · [Why NEONEXUS](#why-neonexus) · [Code mode](#code-mode) · [Safety](#safety)**
 
+[Read why I built NEONEXUS and how the review workflow works](docs/WHY_NEONEXUS.md).
+
 ## Get started on macOS
 
 1. **[Download NEONEXUS 1.0.0](https://github.com/Klimentios/neonexus/archive/refs/tags/v1.0.0.zip)** and unzip it.
