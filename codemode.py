@@ -73,11 +73,24 @@ class CodeMode:
 
     def _baseline(self, folder: Path) -> str:
         """A commit to compare against. A folder that is not a git repository yet becomes one."""
-        if _git(folder, "rev-parse", "--is-inside-work-tree").returncode != 0 or \
-                Path(_git(folder, "rev-parse", "--show-toplevel").stdout.strip() or "/").resolve() != folder:
-            _git(folder, "init", "-q")
-        _git(folder, "add", "-A")
-        _git(folder, "commit", "-q", "--allow-empty", "-m", "NEONEXUS Code mode: starting point")
+        root = _git(folder, "rev-parse", "--show-toplevel")
+        if root.returncode == 0 and Path(root.stdout.strip()).resolve() == folder:
+            status = _git(folder, "status", "--porcelain")
+            if status.returncode != 0:
+                raise ValueError(f"could not inspect git status: {status.stderr.strip()}")
+            if status.stdout:
+                raise ValueError("the existing folder has uncommitted changes; commit or stash them before starting Code mode")
+            head = _git(folder, "rev-parse", "HEAD")
+            if head.returncode == 0:
+                return head.stdout.strip()
+        else:
+            init = _git(folder, "init", "-q")
+            if init.returncode != 0:
+                raise ValueError(f"could not initialize git: {init.stderr.strip()}")
+        for args in (("add", "-A"), ("commit", "-q", "--allow-empty", "-m", "NEONEXUS Code mode: starting point")):
+            result = _git(folder, *args)
+            if result.returncode != 0:
+                raise ValueError(f"could not create git starting point: {result.stderr.strip()}")
         return _git(folder, "rev-parse", "HEAD").stdout.strip()
 
     # --- start ---
@@ -96,8 +109,8 @@ class CodeMode:
         target.mkdir(parents=True, exist_ok=True)
         try:
             base = self._baseline(target)
-        except (OSError, subprocess.TimeoutExpired) as e:
-            return f"git is needed for Code mode: {e}"
+        except (OSError, subprocess.TimeoutExpired, ValueError) as e:
+            return f"could not start Code mode: {e}"
         if not base:
             return "could not create a git starting point in that folder (is git installed?)"
         rel = target.relative_to(self.workspace).as_posix()
@@ -157,9 +170,18 @@ class CodeMode:
         folder = self._folder(t["folder"])
         if not folder:
             return "the task folder is gone"
-        _git(folder, "add", "-A")
-        _git(folder, "commit", "-q", "--allow-empty", "-m", f"Code mode: {t['task'][:72]}")
-        self.projects.update(t["project"], by, human=True, status="done")
+        try:
+            staged = _git(folder, "add", "-A")
+            if staged.returncode != 0:
+                return f"could not stage changes: {staged.stderr.strip()}"
+            committed = _git(folder, "commit", "-q", "--allow-empty", "-m", f"Code mode: {t['task'][:72]}")
+            if committed.returncode != 0:
+                return f"could not commit changes: {committed.stderr.strip()}"
+        except (OSError, subprocess.TimeoutExpired) as e:
+            return f"could not accept Code mode task: {e}"
+        updated = self.projects.update(t["project"], by, human=True, status="done")
+        if isinstance(updated, str):
+            return f"changes were committed, but project status could not be updated: {updated}"
         with self._lock:
             t["status"] = "accepted"
             self._save()

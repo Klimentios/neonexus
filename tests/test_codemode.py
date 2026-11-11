@@ -5,6 +5,7 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import codemode
 import projects
@@ -72,6 +73,47 @@ class CodeModeTests(unittest.TestCase):
         self.assertEqual(self.cm.changes(t["id"])["files"], [])
         self.assertNotIn("Then @", self.posts[-1][2])
         self.assertEqual(self.cm.folders(), ["app"])
+
+    def test_existing_git_folder_preserves_uncommitted_work(self):
+        folder = self.ws / "app"
+        folder.mkdir()
+        subprocess.run(["git", "init", "-q", str(folder)], check=True)
+        (folder / "draft.txt").write_text("user draft")
+        result = self.start(folder="app")
+        self.assertIn("uncommitted changes", result)
+        self.assertEqual((folder / "draft.txt").read_text(), "user draft")
+        self.assertEqual(subprocess.run(["git", "-C", str(folder), "rev-parse", "HEAD"],
+                                        capture_output=True).returncode, 128)
+
+    def test_clean_git_folder_uses_head_without_creating_commit(self):
+        folder = self.ws / "app"
+        folder.mkdir()
+        subprocess.run(["git", "init", "-q", str(folder)], check=True)
+        (folder / "existing.txt").write_text("existing")
+        subprocess.run(["git", "-C", str(folder), "add", "-A"], check=True)
+        subprocess.run(["git", "-C", str(folder), "-c", "user.name=Test", "-c",
+                        "user.email=test@example.invalid", "commit", "-qm", "original"], check=True)
+        head = subprocess.run(["git", "-C", str(folder), "rev-parse", "HEAD"],
+                              capture_output=True, text=True, check=True).stdout.strip()
+        t = self.start(folder="app")
+        self.assertEqual(t["base"], head)
+        self.assertEqual(self.cm.changes(t["id"])["files"], [])
+
+    def test_accept_does_not_report_success_when_commit_fails(self):
+        t = self.start(folder="hello")
+        original_git = codemode._git
+
+        def fail_commit(folder, *args, **kwargs):
+            if args and args[0] == "commit":
+                return subprocess.CompletedProcess(args, 1, "", "simulated commit failure")
+            return original_git(folder, *args, **kwargs)
+
+        with patch.object(codemode, "_git", side_effect=fail_commit):
+            result = self.cm.accept(t["id"])
+        self.assertIn("simulated commit failure", result)
+        self.assertEqual(self.store.get(t["project"])["status"], "active")
+        self.assertEqual(self.cm.tasks[t["id"]]["status"], "working")
+        self.assertEqual(len(self.posts), 1)
 
 
 if __name__ == "__main__":
