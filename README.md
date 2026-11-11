@@ -6,6 +6,8 @@
 
 ![macOS: tested](https://img.shields.io/badge/macOS-tested-176a52) ![Linux: installer not tested on Linux](https://img.shields.io/badge/Linux-installer%20untested-555) ![Windows: installer not tested on Windows](https://img.shields.io/badge/Windows-installer%20untested-555) ![License: AGPL-3.0-or-later](https://img.shields.io/badge/license-AGPL--3.0--or--later-1f3b73) ![UI: 12 languages](https://img.shields.io/badge/UI-12%20languages-1f3b73)
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/klimentios-neonexus-m9pj2u?v=d621303219c64f710917a0ac2c0b1234)](https://m8ven.ai/mcp/klimentios-neonexus-m9pj2u?s=readme)
+
 **[Get started](#get-started-on-macos) · [See the interface](#the-interface) · [Why NEONEXUS](#why-neonexus) · [Code mode](#code-mode) · [Safety](#safety)**
 
 [Read why I built NEONEXUS and how the review workflow works](docs/WHY_NEONEXUS.md).
